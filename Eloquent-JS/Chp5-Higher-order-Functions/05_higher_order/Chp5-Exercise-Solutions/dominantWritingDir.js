@@ -9,8 +9,8 @@ const SCRIPTS = require("./scripts");
 
 function scriptChecker(str) {
   let rtl = 0,
-    ltr = 0,
-    ttb = 0;
+    ltr = 0;
+
   let direction = {};
   for (let char of str) {
     /* JavaScript’s charCodeAt method gives you a code unit, not a full character code. The codePointAt method, 
@@ -26,9 +26,9 @@ function scriptChecker(str) {
           return code >= from && code < to;
         })
       ) {
-        if (script.direction == "rtl") direction["rtl"] = rtl++;
-        else if (script.direction == "ltr") direction["ltr"] = ltr++;
-        else direction["ttb"] = ttb++;
+        script.direction == "rtl"
+          ? (direction["rtl"] = rtl++)
+          : (direction["ltr"] = ltr++);
       }
     }
   }
@@ -37,8 +37,7 @@ function scriptChecker(str) {
 }
 
 function dominantDirection(dir) {
-  if (dir.rtl == null || dir.ltr > dir.rtl) return "ltr";
-  else return "rtl";
+  return dir.rtl == null || dir.ltr > dir.rtl ? "ltr" : "rtl";
 }
 
 console.log(scriptChecker("Hello!"));
