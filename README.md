@@ -6,4 +6,6 @@ Chapter4: DataStructures: Objects&Arrays
 
 Chapter5: Higher Order Functions
 
+Chapter6: The Secret Life Of Objects
+
 Note => Vanilla Javascript used
